@@ -7,5 +7,5 @@ public interface IPaymentService {
 
     PaymentInfo processPayment(Payment payment);
 
-    PaymentReports getPaymentStats();
+    String getPaymentStats();
 }

@@ -29,4 +29,9 @@ public class DateReportBuilder implements IReportBuilder<DateReport> {
 
             return dateReportList;
         }
+
+    @Override
+    public String getReportName() {
+        return "dateReport";
+    }
 }

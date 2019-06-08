@@ -3,7 +3,6 @@ package gpb.web.controller;
 import gpb.web.dto.Payment;
 import gpb.web.dto.PaymentInfo;
 import gpb.web.service.IPaymentService;
-import gpb.web.service.PaymentReports;
 import gpb.web.service.PaymentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/stat", produces = "application/json")
-    public PaymentReports getStats() {
+    public String getStats() {
         return paymentService.getPaymentStats();
     }
 

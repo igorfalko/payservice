@@ -55,4 +55,15 @@ public class DateReport implements IReport {
     public int hashCode() {
         return Objects.hash(date, paymentCount, paymentSum, paymentCommissionSum);
     }
+
+    @Override
+    public String toJson() {
+        return
+                "{" +
+                        "\"date\":\"" + date + "\"," +
+                        "\"paymentCount\":\""+ paymentCount +"\"," +
+                        "\"paymentSum\":" + paymentSum + "," +
+                        "\"paymentCommissionSum\":\"" + paymentCommissionSum + "\"" +
+                        "}";
+    }
 }

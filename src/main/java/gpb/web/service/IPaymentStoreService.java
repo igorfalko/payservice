@@ -6,5 +6,5 @@ import gpb.web.dto.PaymentInfo;
 public interface IPaymentStoreService {
     PaymentInfo storePayment(Payment payment);
 
-    PaymentReports getPaymentStats();
+    String getPaymentStats();
 }

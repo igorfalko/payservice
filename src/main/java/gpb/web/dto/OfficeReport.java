@@ -54,4 +54,15 @@ public class OfficeReport implements IReport {
     public BigDecimal getPaymentCommissionSum() {
         return paymentCommissionSum;
     }
+
+    @Override
+    public String toJson() {
+        return
+                "{" +
+                        "\"office\":\"" + office + "\"," +
+                        "\"paymentCount\":\""+ paymentCount +"\"," +
+                        "\"paymentSum\":" + paymentSum + "," +
+                        "\"paymentCommissionSum\":\"" + paymentCommissionSum + "\"" +
+                        "}";
+    }
 }

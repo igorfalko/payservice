@@ -1,6 +1,8 @@
 package gpb.web.service;
 
 import gpb.report.DateReportBuilder;
+import gpb.report.IReportBuilder;
+import gpb.report.OfficeReportBuilder;
 import gpb.web.dto.Payment;
 import gpb.web.dto.PaymentInfo;
 
@@ -22,8 +24,10 @@ public class PaymentStoreServiceImpl implements IPaymentStoreService {
     }
 
     @Override
-    public PaymentReports getPaymentStats() {
-
-        return new PaymentReports().parse(new DateReportBuilder(), paymentList);
+    public String getPaymentStats() {
+        IReportBuilder[] reportBuilders = new IReportBuilder[] {new DateReportBuilder(), new OfficeReportBuilder()};
+        String report = new PaymentReports().parse(paymentList, reportBuilders);
+        paymentList.clear();
+        return report;
     }
 }

@@ -27,4 +27,9 @@ public class OfficeReportBuilder implements IReportBuilder<OfficeReport>{
 
         return officeReportList;
     }
+
+    @Override
+    public String getReportName() {
+        return "officeReport";
+    }
 }

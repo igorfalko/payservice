@@ -14,7 +14,7 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public PaymentReports getPaymentStats() {
+    public String getPaymentStats() {
         return paymentStore.getPaymentStats();
     }
 

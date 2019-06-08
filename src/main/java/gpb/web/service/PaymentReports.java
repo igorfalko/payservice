@@ -8,24 +8,29 @@ import java.util.Collection;
 import java.util.List;
 
 public class PaymentReports {
-//1. По каждой точке продаж:
-//    * точка продаж
-//    * количество платежей
-//    * сумма платежей
-//    * сумма комиссии
-//2. По каждой дате:
-//    * дата
-//    * количество платежей
-//    * сумма платежей
-//    * сумма комиссии
     private IReportBuilder<IReport> reportBuilder;
 
-    public String getStat() {
-        return "Hoho";
+    public String parse(List<Payment> paymentList, IReportBuilder<IReport> reportBuilder) {
+        Collection<IReport> reportCollection = reportBuilder.build(paymentList);
+        StringBuilder json = new StringBuilder("{\"" + reportBuilder.getReportName() + "\":[");
+        for (IReport report : reportCollection) {
+            json.append(report.toJson());
+            json.append(",");
+        }
+        if (!reportCollection.isEmpty())
+            json.deleteCharAt(json.lastIndexOf(","));
+        json.append("]}");
+        return json.toString();
     }
 
-    public PaymentReports parse(IReportBuilder reportBuilder, List<Payment> paymentList) {
-        Collection<IReport> report = reportBuilder.build(paymentList);
-        return null;
+    public String parse(List<Payment> paymentList, IReportBuilder[] reportBuilders) {
+        StringBuilder json = new StringBuilder("{\"reports\":[");
+        for (IReportBuilder<IReport> reportBuilder : reportBuilders) {
+            json.append(parse(paymentList, reportBuilder));
+            json.append(",");
+        }
+        json.deleteCharAt(json.lastIndexOf(","));
+        json.append("]}");
+        return json.toString();
     }
 }

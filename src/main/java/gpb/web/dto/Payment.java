@@ -70,4 +70,15 @@ public class Payment {
     public void setCommissionAmount(BigDecimal commissionAmount) {
         this.commissionAmount = commissionAmount;
     }
+
+    public String toJson() {
+        return
+            "{" +
+                    "\"paymentDate\":\"" + paymentDate + "\"," +
+                    "\"paymentTime\":\""+ paymentTime +"\"," +
+                    "\"amount\":" + amount + "," +
+                    "\"office\":\"" + office + "\"" +
+            "}";
+
+    }
 }
