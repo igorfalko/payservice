@@ -3,12 +3,12 @@ package gpb.web.dto;
 import java.math.BigDecimal;
 
 public class PaymentInfo {
-    private BigDecimal commissionAmount;
     private Long id;
+    private BigDecimal commissionAmount;
 
-    public PaymentInfo(Payment payment) {
-        this.commissionAmount = payment.getCommissionAmount();
-        this.id = payment.getId();
+    public PaymentInfo(Long id, BigDecimal commissionAmount) {
+        this.id = id;
+        this.commissionAmount = commissionAmount;
     }
 
     public BigDecimal getCommissionAmount() {

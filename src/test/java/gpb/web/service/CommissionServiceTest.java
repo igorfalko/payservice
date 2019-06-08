@@ -1,5 +1,6 @@
 package gpb.web.service;
 
+import gpb.web.dto.Payment;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -11,6 +12,8 @@ public class CommissionServiceTest {
 
     @Test
     public void test() {
-        assertEquals(commissionService.calcCommission(new BigDecimal("100.00")), new BigDecimal("0.15"));
+        assertEquals(
+                commissionService.calcCommission(new Payment(null, null, new BigDecimal("100.00"), "")),
+                new BigDecimal("0.15"));
     }
 }

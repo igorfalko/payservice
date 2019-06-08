@@ -2,7 +2,6 @@ package gpb.web.service;
 
 import gpb.web.dto.Payment;
 import gpb.web.dto.PaymentInfo;
-import gpb.web.dto.PaymentStats;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +14,7 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public PaymentStats getPaymentStats() {
+    public PaymentReports getPaymentStats() {
         return paymentStore.getPaymentStats();
     }
 

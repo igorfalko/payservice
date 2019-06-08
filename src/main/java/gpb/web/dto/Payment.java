@@ -17,8 +17,6 @@ public class Payment {
     private BigDecimal commissionAmount;
     private Long id;
 
-    private ICommissionService commissionService = new CommissionServiceImpl();
-
     public Payment() {}
 
     public Payment(LocalDate paymentDate, LocalTime paymentTime, BigDecimal amount, String office) {
@@ -26,7 +24,6 @@ public class Payment {
         this.paymentTime = paymentTime;
         this.amount = amount;
         this.office = office;
-        this.commissionAmount = commissionService.calcCommission(amount);
     }
 
     public LocalDate getPaymentDate() {
@@ -50,7 +47,6 @@ public class Payment {
     }
 
     public void setAmount(BigDecimal amount) {
-        this.commissionAmount = commissionService.calcCommission(amount);
         this.amount = amount;
     }
 
@@ -74,4 +70,7 @@ public class Payment {
         this.id = id;
     }
 
+    public void setCommissionAmount(BigDecimal commissionAmount) {
+        this.commissionAmount = commissionAmount;
+    }
 }
