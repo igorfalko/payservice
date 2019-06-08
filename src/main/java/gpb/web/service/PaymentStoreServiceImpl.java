@@ -23,6 +23,7 @@ public class PaymentStoreServiceImpl implements IPaymentStoreService {
 
     @Override
     public PaymentReports getPaymentStats() {
+
         return new PaymentReports().parse(new DateReportBuilder(), paymentList);
     }
 }

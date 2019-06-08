@@ -1,7 +1,6 @@
 package gpb;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import gpb.web.dto.Payment;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,7 +25,7 @@ public class PaymentControllerTests {
     private MockMvc mockMvc;
 
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
+    public void testPay() throws Exception {
 
         String paymentJson = "{\n" +
                 "\t\"paymentDate\": \"2019-01-01\",\n" +
@@ -54,7 +48,8 @@ public class PaymentControllerTests {
     }
 
     @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
+    @Ignore
+    public void testStat() throws Exception {
 
         this.mockMvc.perform(get("/stat"))
                 .andDo(print())

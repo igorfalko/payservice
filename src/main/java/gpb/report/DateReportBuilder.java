@@ -22,8 +22,8 @@ public class DateReportBuilder implements IReportBuilder<DateReport> {
                 dateReportList.add(new DateReport(
                         date,
                         paymentCollection.stream().filter(payment -> date.compareTo(payment.getPaymentDate()) == 0).count(),
-                        paymentCollection.stream().filter(payment -> date.compareTo(payment.getPaymentDate()) == 0).map(payment -> payment.getAmount()).reduce(BigDecimal::add).get(),
-                        paymentCollection.stream().filter(payment -> date.compareTo(payment.getPaymentDate()) == 0).map(payment -> payment.getCommissionAmount()).reduce(BigDecimal::add).get()
+                        paymentCollection.stream().filter(payment -> date.compareTo(payment.getPaymentDate()) == 0).map(Payment::getAmount).reduce(BigDecimal::add).get(),
+                        paymentCollection.stream().filter(payment -> date.compareTo(payment.getPaymentDate()) == 0).map(Payment::getCommissionAmount).reduce(BigDecimal::add).get()
                 ));
             }
 

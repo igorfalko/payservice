@@ -4,9 +4,11 @@ import gpb.web.dto.OfficeReport;
 import gpb.web.dto.Payment;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class OfficeReportBuilder implements IReportBuilder<OfficeReport>{
 
@@ -18,8 +20,8 @@ public class OfficeReportBuilder implements IReportBuilder<OfficeReport>{
             officeReportList.add(new OfficeReport(
                     office,
                     paymentCollection.stream().filter(payment -> office.equals(payment.getOffice())).count(),
-                    paymentCollection.stream().filter(payment -> office.equals(payment.getOffice())).map(payment -> payment.getAmount()).reduce(BigDecimal::add).get(),
-                    paymentCollection.stream().filter(payment -> office.equals(payment.getOffice())).map(payment -> payment.getCommissionAmount()).reduce(BigDecimal::add).get()
+                    paymentCollection.stream().filter(payment -> office.equals(payment.getOffice())).map(Payment::getAmount).reduce(BigDecimal::add).get(),
+                    paymentCollection.stream().filter(payment -> office.equals(payment.getOffice())).map(Payment::getCommissionAmount).reduce(BigDecimal::add).get()
             ));
         }
 

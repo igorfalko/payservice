@@ -3,7 +3,6 @@ package gpb.web.service;
 import gpb.web.dto.Payment;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class CommissionServiceImpl implements ICommissionService {

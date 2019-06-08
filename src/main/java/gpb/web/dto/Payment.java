@@ -1,8 +1,5 @@
 package gpb.web.dto;
 
-import gpb.web.service.CommissionServiceImpl;
-import gpb.web.service.ICommissionService;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;

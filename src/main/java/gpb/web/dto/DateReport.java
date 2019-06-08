@@ -4,6 +4,7 @@ import gpb.report.IReport;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class DateReport implements IReport {
 //    * дата
@@ -37,5 +38,21 @@ public class DateReport implements IReport {
 
     public BigDecimal getPaymentCommissionSum() {
         return paymentCommissionSum;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DateReport that = (DateReport) o;
+        return Objects.equals(date, that.date) &&
+                Objects.equals(paymentCount, that.paymentCount) &&
+                Objects.equals(paymentSum, that.paymentSum) &&
+                Objects.equals(paymentCommissionSum, that.paymentCommissionSum);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, paymentCount, paymentSum, paymentCommissionSum);
     }
 }
