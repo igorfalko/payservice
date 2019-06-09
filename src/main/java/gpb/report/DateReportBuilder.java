@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DateReportBuilder implements IReportBuilder<DateReport> {
@@ -17,7 +16,7 @@ public class DateReportBuilder implements IReportBuilder<DateReport> {
     public List<DateReport> build(Collection<Payment> paymentCollection) {
 
             List<DateReport> dateReportList = new ArrayList<>();
-            Set<LocalDate> dateList = paymentCollection.stream().map(Payment::getPaymentDate).collect(Collectors.toSet());
+            List<LocalDate> dateList = paymentCollection.stream().map(Payment::getPaymentDate).distinct().sorted().collect(Collectors.toList());
             for (LocalDate date : dateList) {
                 dateReportList.add(new DateReport(
                         date,

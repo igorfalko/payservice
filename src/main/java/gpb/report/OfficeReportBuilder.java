@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class OfficeReportBuilder implements IReportBuilder<OfficeReport>{
@@ -15,7 +14,7 @@ public class OfficeReportBuilder implements IReportBuilder<OfficeReport>{
     @Override
     public List<OfficeReport> build(Collection<Payment> paymentCollection) {
         List<OfficeReport> officeReportList = new ArrayList<>();
-        Set<String> officeList = paymentCollection.stream().map(Payment::getOffice).collect(Collectors.toSet());
+        List<String> officeList = paymentCollection.stream().map(Payment::getOffice).distinct().sorted().collect(Collectors.toList());
         for (String office : officeList) {
             officeReportList.add(new OfficeReport(
                     office,
